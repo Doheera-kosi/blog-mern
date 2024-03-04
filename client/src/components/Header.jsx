@@ -42,19 +42,8 @@ export default function Header() {
       </Button>
 
       <div className="flex gap-2 md:order-2">
-        {/* <Button
-          className="w-15 h-10 hidden sm:inline"
-          color="gray"
-          pill
-          onClick={() => dispatch(toggleTheme())}
-        >
-          {theme === 'light' ? <FiMoon /> : <FiSun /> }
-        </Button> */}
-
         <Button
-          className={`w-15 h-10 hidden sm:inline ${
-            theme === "light" ? "light-mode" : "dark-mode"
-          }`}
+          className="w-15 h10 inline" // Remove the hidden sm:inline class
           color="gray"
           pill
           onClick={() => dispatch(toggleTheme())}
