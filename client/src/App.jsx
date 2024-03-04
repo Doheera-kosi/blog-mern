@@ -3,26 +3,27 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Dashbord from "./pages/Dashbord";
 import Projects from "./pages/Projects";
 import SignOut from "./pages/SignOut";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/Dashbord";
 
 export default function App() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashbord />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="/projects" element={<Projects />} />
         <Route path="/sign-out" element={<SignOut />} />
-
       </Routes>
       <Footer />
     </BrowserRouter>
