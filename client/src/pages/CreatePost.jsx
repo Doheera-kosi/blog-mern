@@ -39,7 +39,7 @@ export default function CreatePost() {
         </div>
         <ReactQuill theme="snow" placeholder="What is on you mind?" className="h-72 mb-12" required />
         <Button type="submit" gradientDuoTone="purpleToPink">
-          
+          Publish 
         </Button>
       </form>
     </div>
