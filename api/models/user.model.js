@@ -19,7 +19,11 @@ const userSchema = new mongoose.Schema(
     profilePicture:{
       type:String,
       default: "https://i.pngimg.me/thumb/f/720/c3f2c592f9.jpg",
-    }
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
