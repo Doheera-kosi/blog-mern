@@ -17,6 +17,7 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
+  signOutSuccess,
 } from "../redux/user/userSlice.js";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
@@ -129,21 +130,38 @@ export default function DashProfile() {
 
   // Function for handleDeleteUser
   const handleDeleteUser = async () => {
-    setShowModal(false)
+    setShowModal(false);
 
     try {
-      dispatch(deleteUserStart())
+      dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE'
-      })
-      const data = await res.json()
-      if(!res.ok) {
-        dispatch(deleteUserFailure(data.message))
-      }else {
-        dispatch(deleteUserSuccess(data))
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        dispatch(deleteUserFailure(data.message));
+      } else {
+        dispatch(deleteUserSuccess(data));
       }
     } catch (error) {
-      dispatch(deleteUserFailure(error.message))
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
+
+  // UI LOGIC FOR SIGNING OUT
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signOutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -228,7 +246,9 @@ export default function DashProfile() {
         <span onClick={() => setShowModal(true)} className="cursor-pointer">
           Delete Account
         </span>
-        <span className="cursor-pointer">Sign Out</span>
+        <span onClick={handleSignOut} className="cursor-pointer">
+          Sign Out
+        </span>
       </div>
       {updateUserSuccess && (
         <Alert color="success" className=" mt-5">
@@ -262,7 +282,10 @@ export default function DashProfile() {
               <Button color="failure" onClick={handleDeleteUser}>
                 Yes, I&apos;m Sure
               </Button>
-              <Button color="gray" onClick={() => setShowModal(false)}> No, cancel</Button>
+              <Button color="gray" onClick={() => setShowModal(false)}>
+                {" "}
+                No, cancel
+              </Button>
             </div>
           </div>
         </Modal.Body>
