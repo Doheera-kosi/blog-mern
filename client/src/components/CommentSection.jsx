@@ -11,8 +11,6 @@ export default function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
   const [commentError, setCommentError] = useState(null);
 
-  console.log(comments);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
