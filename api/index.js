@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
-import postRoutes from "./routes/post.route.js"
+import postRoutes from "./routes/post.route.js";
+import commentRoutes from "./routes/comment.route.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express(); // Define app before using it
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 mongoose
@@ -29,8 +30,8 @@ mongoose
 //  API TEST ROUTES
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/post", postRoutes)
-
+app.use("/api/post", postRoutes);
+app.use('/api/comment', commentRoutes)
 // MIDDLE WARE TO HANDLE ERROR
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
