@@ -9,6 +9,7 @@ export default function Search() {
     sort: "desc",
     category: "uncategorized",
   });
+
   console.log(sidebarData);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,6 @@ export default function Search() {
     const searchTermFromUrl = urlParams.get("searchTerm");
     const sortFromUrl = urlParams.get("sort");
     const categoryFromUrl = urlParams.get("category");
-
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
       setSidebarData({
         ...sidebarData,
@@ -37,17 +37,14 @@ export default function Search() {
       setLoading(true);
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/post/getposts?${searchQuery}`);
-
       if (!res.ok) {
         setLoading(false);
         return;
       }
-
       if (res.ok) {
         const data = await res.json();
         setPosts(data.posts);
         setLoading(false);
-
         if (data.posts.length === 9) {
           setShowMore(true);
         } else {
@@ -55,7 +52,6 @@ export default function Search() {
         }
       }
     };
-
     fetchPosts();
   }, [location.search]);
 
@@ -75,7 +71,6 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("searchTerm", sidebarData.searchTerm);
     urlParams.set("category", sidebarData.category);
@@ -91,7 +86,9 @@ export default function Search() {
     urlParams.set('startIndex', startIndex);
     const searchQuery = urlParams.toString();
     const res = await fetch(`/api/post/getposts?${searchQuery}`)
-
+    if(!res.ok) {
+      return;
+    }
     if(res.ok){
       const data = await res.json()
       setPosts([...posts, ...data.posts])
