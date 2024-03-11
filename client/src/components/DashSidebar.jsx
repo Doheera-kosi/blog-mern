@@ -1,7 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import { useEffect, useState } from "react";
 import {
-  HiArrowSmRight,
   HiDocumentText,
   HiOutlineUserGroup,
   HiUser,
@@ -10,6 +9,8 @@ import { Link, useLocation } from "react-router-dom";
 import { signOutSuccess } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCommentDots, FaSignInAlt } from "react-icons/fa";
+import { RiDashboard3Fill } from "react-icons/ri";
+
 
 export default function DashSidebar() {
   const location = useLocation();
@@ -47,6 +48,18 @@ export default function DashSidebar() {
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
         <Sidebar.ItemGroup className="flex flex-col gap-1">
+          {
+            currentUser && currentUser.isAdmin && (
+              <Link to='/dashboard?tab=dash'>
+                <Sidebar.Item
+                active={tab === 'dash' || !tab}
+                  icon={RiDashboard3Fill}
+                >
+                  Dashboard
+                </Sidebar.Item>
+              </Link>
+            )
+          }
           <Link to="/dashboard?tab=profile">
             <Sidebar.Item
               active={tab === "profile"}
