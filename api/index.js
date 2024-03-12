@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.route.js";
 import postRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 dotenv.config();
 
@@ -27,11 +28,20 @@ mongoose
     console.error(`MongoDB connection failed: ${err}`);
   });
 
+const __dirname = path.resolve();
+
 //  API TEST ROUTES
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
-app.use('/api/comment', commentRoutes)
+app.use("/api/comment", commentRoutes);
+
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "/client", "dist", "index.html"));
+});
+
 // MIDDLE WARE TO HANDLE ERROR
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
