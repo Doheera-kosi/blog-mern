@@ -28,7 +28,7 @@ export default function FooterComp() {
                   target="blank"
                   rel="noopener noreferrer"
                 >
-                  100 JS Project
+                  99+ JS Project
                 </Footer.Link>
                 <Footer.Link
                   href="/about"
