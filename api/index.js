@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 
 app.get("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 
 // MIDDLE WARE TO HANDLE ERROR
