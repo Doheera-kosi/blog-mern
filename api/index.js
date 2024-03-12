@@ -1,22 +1,12 @@
-const express = require('express');
-// import mongoose from "mongoose";
-// import dotenv from "dotenv";
-// import userRoutes from "./routes/user.route.js";
-// import authRoutes from "./routes/auth.route.js";
-// import postRoutes from "./routes/post.route.js";
-// import commentRoutes from "./routes/comment.route.js";
-// import cookieParser from "cookie-parser";
-// import path from "path";
-
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const userRoutes = require("./routes/user.route.js");
-const authRoutes = require("./routes/auth.route.js");
-const postRoutes = require("./routes/post.route.js");
-const commentRoutes = require("./routes/comment.route.js");
-const cookieParser = require("cookie-parser");
-const path = require("path");
-
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
+import postRoutes from "./routes/post.route.js";
+import commentRoutes from "./routes/comment.route.js";
+import cookieParser from "cookie-parser";
+import path from "path";
 
 dotenv.config();
 
