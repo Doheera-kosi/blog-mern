@@ -13,6 +13,7 @@ dotenv.config();
 const app = express(); // Define app before using it
 app.use(express.json());
 app.use(cookieParser());
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
 mongoose
@@ -28,7 +29,6 @@ mongoose
     console.error(`MongoDB connection failed: ${err}`);
   });
 
-const __dirname = path.resolve();
 
 //  API TEST ROUTES
 app.use("/api/user", userRoutes);
@@ -36,14 +36,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 
-// app.use(express.static(path.join(__dirname, "/client/dist")));
-// app.use(express.static(path.join(__dirname, "../client/dist")));
-app.use(express.static(path.join(__dirname, "../client")));
-
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 
 app.get("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "/client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 // MIDDLE WARE TO HANDLE ERROR
