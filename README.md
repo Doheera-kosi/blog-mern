@@ -46,8 +46,6 @@
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
 <details>
   <summary>Client</summary>
   <ul>
@@ -76,8 +74,7 @@
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
-
-> Describe between 1-3 key features of the application.
+>
 
 - [ ] **[User authentication and authorization]**
 - [ ] **[Create, read, update, and delete (CRUD) operations for blog posts]**
@@ -90,8 +87,6 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
 - [Live Demo Link](https://evans-mern-blog.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -100,9 +95,7 @@
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
-To get a local copy up and running, follow these steps.
+> To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
