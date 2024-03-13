@@ -10,7 +10,7 @@ import path from "path";
 
 dotenv.config();
 
-const app = express(); // Define app before using it
+const app = express();
 app.use(express.json());
 app.use(cookieParser());
 const __dirname = path.resolve();
